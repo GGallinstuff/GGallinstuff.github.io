@@ -40,7 +40,7 @@
       min: 'Ordine minimo {x}.',
       pay: 'Vai al pagamento', wait: 'Un attimo…',
       e_terms: 'Devi accettare i termini.', e_unset: 'Il pagamento non è ancora collegato. Torna presto!', e_fail: 'Qualcosa è andato storto. Riprova o scrivici.',
-      tag_nuovo: 'Nuovo', tag_riproposta: 'Riproposta'
+      tag_nuovo: 'Nuovo', tag_riproposta: 'Riproposta', tag_addestrato: 'Addestrato', photo: 'Foto'
     },
     en: {
       announce: 'Free shipping in Italy from €85 · Minimum order €5',
@@ -74,7 +74,7 @@
       min: 'Minimum order {x}.',
       pay: 'Go to checkout', wait: 'One sec…',
       e_terms: 'You must accept the terms.', e_unset: 'Payment is not connected yet. Come back soon!', e_fail: 'Something went wrong. Try again or write to us.',
-      tag_nuovo: 'New', tag_riproposta: 'Back again'
+      tag_nuovo: 'New', tag_riproposta: 'Back again', tag_addestrato: 'Trained', photo: 'Photo'
     }
   };
 
@@ -184,10 +184,14 @@
   var shop = $('#shop'), catbar = $('#catbar');
   var filters = {};  // per categoria: {q, tag, sub}
 
+  // etichette sulla foto: tutte quelle che hanno un testo (nuovo, riproposta, addestrato...)
   function badgeFor(p) {
-    if (p.tags.indexOf('riproposta') > -1 || p.tags.indexOf('riproposte') > -1) return '<span class="badge again">' + esc(t('tag_riproposta')) + '</span>';
-    if (p.tags.indexOf('nuovo') > -1) return '<span class="badge">' + esc(t('tag_nuovo')) + '</span>';
-    return '';
+    var h = (p.tags || []).map(function (x) {
+      if (x === 'riproposte') x = 'riproposta';
+      var lab = T[lang]['tag_' + x] || T.it['tag_' + x]; if (!lab) return '';
+      return '<span class="badge' + (x === 'riproposta' ? ' again' : x === 'nuovo' ? '' : ' alt') + '">' + esc(lab) + '</span>';
+    }).join('');
+    return h ? '<div class="badges">' + h + '</div>' : '';
   }
 
   function makeCard(p) {
@@ -207,6 +211,17 @@
     var img = $('img', card), ph = $('.ph', card), price = $('.price', card);
     function upd() { price.textContent = money(p.options[oi].price); }
     upd(); setImg(img, ph, sources(p, vi));
+    if (p.photos > 1) {   // piu' foto dello stesso prodotto: pallini sotto la foto
+      var dots = document.createElement('div'); dots.className = 'dots';
+      for (var di = 1; di <= p.photos; di++) dots.insertAdjacentHTML('beforeend', '<button type="button" aria-label="' + esc(t('photo')) + ' ' + di + '" aria-pressed="' + (di === 1) + '" data-ph="' + di + '"></button>');
+      ph.appendChild(dots);
+      dots.addEventListener('click', function (e) {
+        var b = e.target.closest('button'); if (!b) return;
+        var n = +b.getAttribute('data-ph'), base = 'img/prodotti/' + p.id;
+        setImg(img, ph, n === 1 ? sources(p, vi) : [base + '-' + n + '.jpg', base + '-' + n + '.png']);
+        $$('button', dots).forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      });
+    }
     var sv = $('.sel-v', card), so = $('.sel-o', card);
     if (sv) sv.addEventListener('change', function () { vi = +sv.value; sync(); setImg(img, ph, sources(p, vi)); if (p.cat === 'tubini' && window.tubinoFx) setTimeout(function () { window.tubinoFx(img, ph); }, 60); });
     if (so) so.addEventListener('change', function () { oi = +so.value; upd(); });
@@ -313,14 +328,13 @@
 
   function hasProducts(c) { return C.products.some(function (p) { return p.cat === c.id; }); }
   function renderShop() {
-    // mostra solo le categorie che hanno almeno un prodotto (le altre compaiono da sole quando ne aggiungi uno dal retrobottega)
-    var live = C.categories.filter(hasProducts);
-    C.categories.forEach(function (c) { if (!hasProducts(c)) { var old = $('#' + c.id, shop); if (old) old.remove(); } });
+    // tutte le categorie: quelle senza prodotti mostrano "In arrivo."
+    var live = C.categories.slice();
     live.forEach(renderCategory);
     live.forEach(function (c) { var s = $('#' + c.id, shop); if (s) shop.appendChild(s); });   // ordine come nel catalogo
     if (!live.length) shop.innerHTML = '<p class="empty empty-shop" style="padding:40px 0">' + esc(t('nothing')) + '</p>';
     else { var e0 = $('.empty-shop', shop); if (e0) e0.remove(); }
-    var ca = $('#ctaAdopt'); if (ca) ca.setAttribute('href', live.length ? '#' + live[0].id : '#shop');
+    var full = C.categories.filter(hasProducts), ca = $('#ctaAdopt'); if (ca) ca.setAttribute('href', full.length ? '#' + full[0].id : '#shop');
     catbar.innerHTML = live.map(function (c) { return '<a class="chip" href="#' + c.id + '">' + esc(cname(c)) + '</a>'; }).join('');
     observe(document);
   }

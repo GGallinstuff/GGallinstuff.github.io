@@ -108,5 +108,30 @@ window.CATALOG = {
    ]
   }
  ],
- "products": []
+ "products": [
+  {
+   "id": "ano-standard-rosso",
+   "name": "Ano da Giardino Standard Rosso",
+   "cat": "standard",
+   "tags": [
+    "nuovo",
+    "addestrato"
+   ],
+   "letter": false,
+   "photos": 2,
+   "desc": [
+    "Comodo, gentile, non ingombrante, non morde e non va morso. Addestrato al \"paga la mossa\". Rosso Infiammato versione Monocromatica rossa. Fornito di sticker + Certificato + Istruzioni + Packaging.",
+    "Comfy, kind, compact: it doesn't bite and shouldn't be bitten. Trained in the \"paga la mossa\". Inflamed Red, monochrome red version. Comes with sticker + Certificate + Instructions + Packaging."
+   ],
+   "options": [
+    {
+     "l": [
+      "Ano",
+      "Ano"
+     ],
+     "price": 30
+    }
+   ]
+  }
+ ]
 };
