@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ano da Giardino</title>
+  <meta name="description" content="Toy da collezione irriverenti. Allevamento di Ani da Giardino e rivendita di Ani surrogati.">
+  <meta property="og:title" content="Ano da Giardino">
+  <meta property="og:description" content="L'oggetto inutile di cui hai bisogno.">
+  <meta property="og:image" content="https://gganni666.github.io/img/logo.png">
+  <meta name="theme-color" content="#fb941b">
+  <link rel="icon" href="img/logo.png" type="image/png">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="announce" data-i18n="announce">Spedizione gratis in Italia da 85€ · Ordine minimo 5€</div>
+
+<header class="site-header">
+  <a class="logo" href="#top" id="logo"><span id="logoText">Ano da <b>Giardino</b></span></a>
+  <nav class="nav" aria-label="Menu">
+    <a href="#shop" data-i18n="nav_shop">Shop</a>
+    <a href="#spedizioni" data-i18n="nav_ship">Spedizioni</a>
+    <a href="#rivenditori" data-i18n="nav_custom">Rivenditori</a>
+    <a href="#chi-siamo" data-i18n="nav_about">Chi siamo</a>
+    <a href="#contatti" data-i18n="nav_contact">Contatti</a>
+  </nav>
+  <div class="tools">
+    <div class="lang" role="group" aria-label="Lingua / Language">
+      <button type="button" data-lang="it" aria-pressed="true">IT</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <button type="button" class="cart-btn" id="cartBtn"><span data-i18n="cart">Carrello</span> (<span id="cartCount">0</span>)</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-in">
+      <h1><span id="heroTitle" data-text="">Adotta l'<em>Ano</em></span></h1>
+      <p class="sub" data-i18n="hero_sub">Ano_da_Giardino</p>
+      <p class="slogan" data-i18n="slogan">“L'oggetto inutile di cui hai bisogno”</p>
+      <div class="cta-row">
+        <a class="btn" href="#shop" id="ctaAdopt" data-i18n="cta_box">Adotta un Ano</a>
+        <a class="btn ghost" href="#shop" data-i18n="cta_shop">Vai allo shop</a>
+      </div>
+    </div>
+  </section>
+
+  <nav class="catbar" id="catbar" aria-label="Categorie"></nav>
+
+  <div class="wrap" id="shop"></div>
+
+  <div class="wrap">
+    <section class="info" id="spedizioni">
+      <h2 data-i18n="ship_title">Spedizioni</h2>
+      <div class="two">
+        <ul>
+          <li data-i18n="ship_1">Italia: InPost al locker (5,50€) o BRT Express a domicilio (7,50€).</li>
+          <li data-i18n="ship_2">Estero: pacco con corriere, 10€.</li>
+          <li data-i18n="ship_3">Spedizione gratis in Italia sopra gli 85€.</li>
+          <li data-i18n="ship_4">Ordine minimo 5€.</li>
+        </ul>
+        <ul>
+          <li data-i18n="ship_5">Prepariamo l’ordine in 1-2 giorni e lo consegniamo al corriere entro 1 giorno.</li>
+          <li data-i18n="ship_6">Corrieri: InPost e BRT Express.</li>
+          <li data-i18n="ship_7">Ogni Ano viaggia in pacco: per ora niente spedizione in lettera.</li>
+          <li data-i18n="ship_8">Ritiro a mano nella Bassa Modenese.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="info" id="rivenditori">
+      <h2 data-i18n="custom_title">Rivenditori e adozioni multiple</h2>
+      <div class="two">
+        <div class="box">
+          <h3 data-i18n="whole_h">Più di un Ano?</h3>
+          <p data-i18n="whole_p">Per adozioni multiple ci sono sconti, e se vuoi rivendere gli Ani possiamo parlarne. Scrivici in privato.</p>
+          <a class="btn" id="mailWhole" href="mailto:ggallinstuff@gmail.com?subject=Adozioni%20multiple" data-i18n="whole_cta">Scrivici</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="info" id="chi-siamo">
+      <h2 data-i18n="about_title">Chi siamo</h2>
+      <div class="two">
+        <div>
+          <img class="about-logo" id="aboutLogo" src="img/logo.png" alt="Ano da Giardino" style="max-width:280px;margin-bottom:18px" hidden>
+          <p data-i18n="about_1">Allevamento di Ani da Giardino e rivendita di Ani surrogati.</p>
+          <p data-i18n="about_2">Nella Bassa Modenese, dal 2028.</p>
+          <a class="btn" href="https://www.instagram.com/ano_da_giardino/" target="_blank" rel="noopener" style="margin-top:12px">@ano_da_giardino</a>
+        </div>
+        <img class="about-img" id="aboutImg" src="img/chi-siamo.jpg" alt="" hidden>
+      </div>
+    </section>
+
+    <section class="info" id="contatti">
+      <h2 data-i18n="contact_title">Contatti</h2>
+      <ul>
+        <li>Email: <a href="mailto:ggallinstuff@gmail.com"><u>ggallinstuff@gmail.com</u></a></li>
+        <li>Instagram: <a href="https://www.instagram.com/ano_da_giardino/" target="_blank" rel="noopener"><u>@ano_da_giardino</u></a></li>
+        <li data-i18n="contact_online">Solo online. Ritiro a mano nella Bassa Modenese.</li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <p><a href="privacy.html">Privacy</a><a href="termini.html" data-i18n="terms">Termini</a><a href="https://www.instagram.com/ano_da_giardino/" target="_blank" rel="noopener">Instagram</a></p>
+  <p style="margin-top:10px">© 2026 Ano da Giardino</p>
+</footer>
+
+<!-- carrello sempre a vista -->
+<button type="button" class="cart-tab" id="cartTab" aria-label="Carrello">
+  <span class="n" id="tabCount">0</span> <span data-i18n="cart">Carrello</span> · <span id="tabTotal">0,00 €</span>
+</button>
+<div class="veil" id="veil"></div>
+<aside class="drawer" id="drawer" aria-label="Carrello" aria-hidden="true">
+  <div class="dr-head"><span data-i18n="cart">Carrello</span><button type="button" class="x" id="closeCart" aria-label="Chiudi">✕</button></div>
+  <div class="dr-body" id="cartLines"></div>
+  <div class="dr-foot" id="cartFoot"></div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="products.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
