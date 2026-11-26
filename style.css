@@ -363,3 +363,4 @@ h1, h2, h3, .logo, .btn, .add, .cart-btn, .price { font-weight: 800; }
 .dots button { width: 14px; height: 14px; padding: 0; border-radius: 50%; border: 2px solid #fefefe; background: rgba(0,0,0,.35); cursor: pointer; }
 .dots button[aria-pressed="true"] { background: #fefefe; }
 .dots button:focus-visible { outline: 3px solid var(--acid); outline-offset: 2px; }
+.hero h1 em { background: url("img/sfondo-ano.png") center / auto 100% no-repeat; border-radius: 0; display: inline-block; line-height: 1; padding: .72em .27em; margin: -.4em 0; color: #fefefe; -webkit-text-stroke: .06em #0b0b0b; paint-order: stroke fill; text-shadow: 0 .05em 0 #0b0b0b; }
