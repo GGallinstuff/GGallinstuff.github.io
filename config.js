@@ -4,5 +4,5 @@
 window.SITE_CONFIG = {
   shopName: "Ano da Giardino",
   email: "ggallinstuff@gmail.com",
-  checkoutEndpoint: ""
+  checkoutEndpoint: "https://pagamenti.ggallinstuff2.workers.dev"
 };
